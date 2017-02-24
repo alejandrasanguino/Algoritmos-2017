@@ -1,0 +1,115 @@
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+using namespace std;
+
+int contarDigitos (int n);
+int contarDigitosImpares (int n);
+int invertirNumero (int n);
+int eliminarPares (int n);
+
+void main()
+{
+	int nro,r,i,inv,elim,opcion;
+	cout << "introducir un numero natural: ";
+	cin >> nro;
+	do{
+		cout << "====================================================================================================" << endl << endl;
+		cout << "                                Menu de Operaciones con Numeros Naturales. " << endl;
+		cout << " Porfavor Introduzca la opcion correspondiente a la operacion que desea realizar. " << endl;
+		cout << " 1.- Contar la Cantidad de Digitos de un numero natural. " << endl;
+		cout << " 2.- Contar la cantidad de Digitos impares de un numero natural. " << endl;
+		cout << " 3.- Invertir el numero" << endl;
+		cout << " 4.- Eliminar los digitos pares de un numero natural. " << endl;
+		cout << " 0.- Salir " << endl << endl;
+		cout << "====================================================================================================" << endl;
+		cin >> opcion;
+		switch (opcion){
+			case 1 : {
+						r=contarDigitos (nro);
+						cout << "la cantidad de digitos es: " << r << endl;
+						getch();
+						system ("cls");
+						break;
+					 }
+			
+			case 2 : {
+						i=contarDigitosImpares (nro);
+						cout << "la cantidad de digitos impares es: " << i << endl;
+						getch();
+						system ("cls");
+						break;
+					 }
+
+			case 3 : {
+						inv=invertirNumero (nro);
+						cout << "El numero invertido es: " << inv << endl;
+						getch();
+					    system ("cls");
+						break;
+					 }
+			
+			case 4 : {
+						elim=eliminarPares (nro);
+						cout << "El nuevo numero es: " << elim << endl;
+						getch();
+						system ("cls");
+						break;
+					 }
+
+			case 0 : {   
+				        cout << " Salir " << endl;
+						break;
+					 }
+
+		}
+		getch();
+	}while (opcion != 0);
+}
+
+int contarDigitos (int n)
+{
+	int s=0;
+	while (n > 0){
+		n=n/10;
+		s++;
+	}
+	return (s);
+}
+
+int contarDigitosImpares (int n)
+{
+	int s=0;
+	while (n > 0)
+	{
+		if (n % 2 != 0){
+			s++;
+		}
+		n=n/10;
+	}
+	return (s);
+}
+
+int invertirNumero (int n)
+{
+	int nuevonum=0, d;
+	while (n > 0){
+		d = n % 10;
+		nuevonum = (nuevonum*10) + d;
+		n = n/10;
+	}
+	return (nuevonum);
+}
+
+int eliminarPares (int n)
+{
+	int nuevonum = 0, d;
+	while (n > 0){
+		d = n % 10;
+		if (d % 2 != 0){
+			nuevonum = (nuevonum * 10) + d;
+		}
+		n = n / 10;
+	}
+	return (invertirNumero(nuevonum));
+}
