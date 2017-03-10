@@ -1,0 +1,85 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+void cargar (int vec[],int n);
+void mostrar (int vec[],int n);
+void invertirVec(int vec[],int n);
+void cargarEspiral(int vec[],int n);
+int MayorValor(int vec[],int n);
+void EliminaElementoMayor(int vec[],int &n);
+
+void main(){
+	int nroElementos,may, vect[50];
+	cout << "Cuantos elementos? : ";
+	cin >> nroElementos;
+	cargar (vect,nroElementos);
+	mostrar (vect,nroElementos);
+	EliminaElementoMayor(vect,nroElementos);
+	mostrar (vect,nroElementos);
+	getch();
+}
+
+void cargar (int vec[],int n){
+	int i;
+	for (i=0;i<n;i++){
+		cout << "introducir elemento Vec["<<i<<"] : ";
+		cin >> vec[i];
+	}
+}
+
+void mostrar(int vec[],int n){
+	int i;
+	cout << "El Vector es: " << endl << endl;
+	for (i=0;i<n;i++){
+		cout << vec[i] << "   ";
+	}
+	cout << endl << endl;
+}
+
+void invertirVec(int vec[],int n){
+	int i,aux;
+	for (i=0;i<n/2;i++){
+		aux			= vec[i];
+		vec[i]		= vec[n-1-i];
+		vec[n-1-i]  = aux;
+	}
+}
+
+void cargarEspiral(int vec[],int n){
+	int i, band=0, sube=0, baja=n-1;
+	for (i=1;i<=n;i++){
+		if(band==0){
+			vec[sube++] = i;
+			band = 1;
+		}else{
+			vec[baja--] = i;
+			band = 0;
+		}
+	}
+}
+
+int MayorValor(int vec[],int n){
+	int i,mayor;
+	mayor=vec[0];
+	for(i=1;i<n;i++){
+		if(vec[i]>mayor){
+			mayor=vec[i];
+		}
+	}
+	return(mayor);
+}
+
+void EliminaElementoMayor(int vec[],int &n){
+	int i,may=MayorValor(vec,n),k;
+	for(i=0;i<n;i++){
+		if(vec[i] == may){
+			for(k=i;k<n-1;k++){
+				vec[k] = vec [k+1];
+			}
+			n--;
+			i--;
+		}
+	}
+}
