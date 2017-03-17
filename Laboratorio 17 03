@@ -1,0 +1,83 @@
+Ejercicio 1
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+void cargarA (int vA[],int nA);
+void mostrarA (int vA[],int nA);
+void cargarB (int vB[],int nB);
+void mostrarB (int VB[],int nB);
+void cargarC (int vA[],int nA,int vB[],int nB, int vC[],int nC);
+void mostrarC (int vA[],int nA,int vB[],int nB, int vC[],int nC);
+
+void main(){
+	int tamA,tamB,tamC,vecA[50],vecB[50],vecC[50];
+	cout << "Introduzca el Tamaño del primer Vector: ";
+	cin >> tamA;
+	cargarA (vecA,tamA);
+	mostrarA (vecA,tamA);
+	cout << "introduzca el Tamaño del segundo Vector: ";
+	cin >> tamB;
+	cargarB (vecB,tamB);
+	mostrarB (vecB,tamB);
+	tamC = tamA + tamB;
+	cargarC (vecA,tamA,vecB,tamB,vecC,tamC);
+	mostrarC (vecA,tamA,vecB,tamB,vecC,tamC);
+	getch();
+}
+
+void cargarA (int vA[],int nA){
+	int i;
+	cout << "Cargue los Elementos del Vector A: " << endl;
+	for (i=0;i<nA;i++){
+		cout << " Vector A["<< i <<"]= ";
+		cin >> vA[i];
+	}
+}
+
+void mostrarA (int vA[],int nA){
+	int i;
+	cout << "Elementos cargados del Vector A: " << endl;
+	for (i=0;i<nA;i++){
+		cout << " Vector A["<<i<<"]= " << vA[i] << endl;
+	}
+}
+
+void cargarB (int vB[],int nB){
+	int i;
+	cout << "Cargue los Elementos del Vector B: " << endl;
+	for (i=0;i<nB;i++){
+		cout << " Vector B["<< i <<"]= ";
+		cin >> vB[i];
+	}
+}
+
+void mostrarB (int vB[],int nB){
+	int i;
+	cout << "Elementos cargados del Vector B: " << endl;
+	for (i=0;i<nB;i++){
+		cout << " Vector B["<<i<<"]= " << vB[i] << endl;
+	}
+}
+
+void cargarC (int vA[],int nA,int vB[],int nB, int vC[],int nC){
+	int i;
+	for (i=0;i<nC;i++){
+		if (vA[i]<vB[i]){
+			vC[i]=vA[i];
+		}
+		if (vB[i]<vA[i]){
+			vC[i]=vA[i];
+		}
+	}
+}
+
+void mostrarC (int vA[],int nA,int vB[],int nB, int vC[],int nC){
+	int i;
+	for (i=0;i<nC;i++){
+		cout << "Vector C["<< i <<"]= " << vC[i] << endl;
+	}
+}
+
+Ejercicio 2
