@@ -1,0 +1,105 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+struct tVector{
+	int svec[20];
+};
+
+void cargar (tVector vec[], int n);
+void mostrar (tVector vec[], int n);
+void invertirVecdeVec (tVector vec[],int n);
+void invertir (int vec[], int n);
+void invertirTodo (tVector vec[],int n);
+void Burbuja (int vec[], int n);
+void OrdenarTodoVecdeVec (tVector vec[], int n);
+
+
+void main(){
+	int n;
+	tVector vec[20];
+	cout << "Introduzca la cantidad de Elementos que desea ocupar: ";
+	cin >> n;
+	cargar(vec,n);
+	mostrar(vec,n);
+	OrdenarTodoVecdeVec(vec,n);
+	mostrar(vec,n);
+	getch();
+}
+
+void cargar (tVector vec[],int n){
+	int i,k;
+	for(i=0;i<n;i++){
+		for(k=0;k<n;k++){
+			cout << "Introducir el elemento en (" << i << "," << k << ") que desea introducir: ";
+			cin >> vec[i].svec[k];
+		}
+	}
+}
+
+void mostrar (tVector vec[],int n){
+	int i,k;
+	for(i=0;i<n;i++){
+		for(k=0;k<n;k++){
+			cout << vec[i].svec[k] << "  ";
+		}
+		cout << "    ";
+	}
+	cout << endl;
+}
+
+void invertirVecdeVec (tVector vec[],int n){
+	int i;
+	for(i=0;i<n;i++){
+		invertir (vec[i].svec,n);
+	}
+}
+
+void invertirTodo (tVector vec[],int n){
+	int i;
+	tVector aux;
+	invertirVecdeVec (vec,n);
+	for (i=0;i<n/2;i++){
+		aux			= vec[i];
+		vec[i]		= vec[n-1-i];
+		vec[n-1-i]	= aux;
+	}
+}
+
+
+
+void invertir (int vec[],int n){
+	int i,aux;
+	for(i=0;i<n/2;i++){
+		aux				= vec[i];
+		vec[i]			= vec[n-1-i];
+		vec[n-1-i]		= aux;
+	}
+}
+
+void Burbuja (int vec[], int n){
+	int i,j,temp;
+	for(i=0;i=n-1;i++){
+		for(j=i;j<n;j++){
+			temp = vec[i];
+			vec[i] = vec[j];
+			vec[j] = temp;
+		}
+	}
+}
+void OrdenarTodoVecdeVec (tVector vec[], int n){
+	int i,k,vAux[50],nAux=0;
+	for(i=0;i<n;i++){
+		for(k=0;k<n;k++){
+			vAux[nAux++] = vec[i].svec[k];
+		}
+	}
+	Burbuja (vAux,nAux);
+	nAux=0;
+	for(i=0;i<n;i++){
+		for(k=0;k<n;k++){
+			vec[i].svec[k] = vAux[nAux++];
+		}
+	}
+}
