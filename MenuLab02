@@ -1,0 +1,94 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+#include "stdlib.h"
+
+using namespace std;
+
+//Prototipo de Funciones
+
+float Potencia(float x, int y);
+int Fact(int n);
+float serie(int x, int N);
+
+//Cuerpo Principal
+
+void main(){
+	float pot,base,factorial,suma;
+	int opcion, exponente, n;
+	do{
+		cout << "===========================================================================================" << endl;
+		cout << "\n                             Menu de Ejercicios Matematicos.                             " << endl;
+		cout << " *Opciones: " << endl;
+		cout << " 1.- Potencia de un Numero. " << endl;
+		cout << " 2.- Factorial de un Numero. " << endl;
+		cout << " 3.- Serie. " << endl;
+		cout << " 0.- Salir. " << endl;
+		cout << " Ingrese una opcion: " ;
+		cin >> opcion;
+		cout << "===========================================================================================" << endl;
+		switch (opcion){
+		case 1: {
+				cout << " 1.- Potencia de un Numero. " << endl;
+				cout << "Ingrese la base de la Potencia: ";
+				cin >> base;
+				cout << "Ingrese el exponente de la potencia: ";
+				cin >> exponente;
+				pot = Potencia(base,exponente);
+				cout << " La Potencia de: " << base << "elevado a: " << exponente << " es: " << pot << endl;
+				cout << "===========================================================================================" << endl;
+				break;
+				}
+		case 2: {
+				cout << " 2.- Factorial de un Numero. " << endl;
+				cout << " Ingrese el valor de N: ";
+				cin >> n;
+				factorial = Fact(n);
+				cout << " El factorial de: " << n << "es: " << factorial << endl;
+				cout << "===========================================================================================" << endl;
+				break;
+				}
+		case 3: {
+				cout << " 3.- Serie. " << endl;
+				cout << " Ingrese el valor de X: ";
+				cin >> base;
+				cout << " Ingrese el valor de Y: ";
+				cin >> exponente;
+				suma = serie(base,exponente);
+				cout << " La suma de la serie es: " << suma << endl;
+				cout << "===========================================================================================" << endl;
+				break;
+				}
+		case 0: {
+				cout << " Salir. " << endl;
+				break;
+				}
+		default:
+				cout << " Opcion Invalida. " << endl;
+		}
+		getch();
+		system("cls");
+	} while(opcion !=0);
+}
+
+float Potencia(float x,int y){
+	float p = 1;
+	for(int i=1;i<=y;i++)
+		p = p * x;
+	return p;
+}
+
+int Fact(int n){
+	int p = 1;
+	for(int i=2;i<=n;i++)
+		p = p * i;
+	return p;
+}
+
+float serie(int X, int N){
+	float s = 0;
+	for (int i=1;i<=N;i++)
+		s = s + Potencia (X,i) / Fact(i);
+	return s;
+}
