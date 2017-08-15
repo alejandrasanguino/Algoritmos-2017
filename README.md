@@ -1,1 +1,0 @@
-# Algoritmos-y-Programacion-I
