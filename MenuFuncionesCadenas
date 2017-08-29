@@ -1,0 +1,123 @@
+//Librerias
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#include "stdlib.h"
+#define MAX 100
+
+using namespace std;
+
+//Prototipos de Funciones
+float areaParalelogramo(float a, float b);
+void cargarVector(int V[],int n);
+void mostrarVector(int V[],int n);
+void invertirVector(int V[], int n);
+string invertirCadena(string var2);
+
+void main(){
+	float base,altura,areaPar;
+	int Vec[MAX];
+	int N,opcion;
+	string cadena;
+	// Menu
+	do{
+		cout << "==========================================================================" << endl;
+		cout << "           Menu de Funciones de Vectores, y Cadena de Caracteres. " << endl;
+		cout << " *Opciones: " << endl;
+		cout << " 1.- Area de un Paralelogramo. " << endl;
+		cout << " 2.- Ejercicio de vector. " << endl;
+		cout << " 3.- Invertir una Cadena de Caracteres. " << endl;
+		cout << " 0.- Salir. " << endl;
+		cout << " " << endl;
+		cout << " Ingrese una Opcion: ";
+		cin >> opcion;
+		cout << "==========================================================================" << endl;
+		switch(opcion){
+			case 1: {
+					cout << " 1.- Area de un Paralelogramo. " << endl;
+					cout << " Ingrese la Base del Paralelogramo: ";
+					cin >> base;
+					cout << " Ingrese la Altura del Paralelogramo: ";
+					cin >> altura;
+					areaPar = areaParalelogramo(base,altura);
+					cout << " El area del Paralelogramo es: " << areaPar;
+					getch();
+					break;
+					}
+			case 2: {
+					cout << " 2.- Invertir un Vector" << endl;
+					cargarVector(Vec,N);
+					getch();
+					system("cls");
+					mostrarVector(Vec,N);
+					invertirVector(Vec,N);
+					getch();
+					break;
+					}
+			case 3: {
+					cout << " 3.- Invertir una Cadena. " << endl;
+					cout << " Ingrese una Cadena de Caracteres: ";
+					cin.ignore();
+					getline(cin, cadena);
+					cout << " La Cadena Invertida es: " << invertirCadena(cadena);
+					getch();
+					break;
+					}
+			case 0:	{
+					cout << " 0.- Salir. " << endl;
+					getch();
+					break;
+					}
+			default: cout << " Opcion Invalida, ingrese otra opcion. ";
+		}
+		system("cls");
+	}while(opcion != 0);
+	cout << "Gracias Vuelva Pronto !!" << endl;
+	getch();
+}
+
+float areaParalelogramo(float a, float b){
+	float area;
+	area = a * b;
+	return area;
+}
+
+void cargarVector(int V[],int n){
+	for (int i=0; i<n; i++){
+		cout << " V[" << i << "]= ";
+		cin >> V[i];
+	}
+}
+
+void mostrarVector(int V[], int n){
+	for (int i=0; i<n; i++){
+		cout << " V[" << i << "]= " << V[i] << endl;
+	}
+}
+
+void invertirVector(int V[], int n){
+	int i, aux;
+	int V2[MAX];
+	V2 = V;
+	for(i=0; i<n/2 ; i++){
+		aux = V[i];
+		V[i] = V[n-1-i];
+		V[n-1-i] = aux;
+	}
+	mostrarVector(V2, n);
+}
+
+
+string invertirCadena(string var3){
+	int longitud;
+	char aux;
+	string var2 = var3;
+	longitud = var2.length();
+	for (int i=0; i<longitud/2; i++){
+		aux = var2.at(i);
+		var2[i] = var2[longitud-1-i];
+		var2[longitud-1-i] = aux;
+	}
+	return var2;
+}
