@@ -47,9 +47,9 @@ void main(){
 					}
 			case 2: {
 					cout << " 2.- Invertir un Vector" << endl;
+					cout << " Ingrese La dimension del Vector: ";
+					cin >> N;
 					cargarVector(Vec,N);
-					getch();
-					system("cls");
 					mostrarVector(Vec,N);
 					invertirVector(Vec,N);
 					getch();
@@ -71,6 +71,7 @@ void main(){
 					}
 			default: cout << " Opcion Invalida, ingrese otra opcion. ";
 		}
+		cout << "==========================================================================" << endl;
 		system("cls");
 	}while(opcion != 0);
 	cout << "Gracias Vuelva Pronto !!" << endl;
@@ -98,14 +99,14 @@ void mostrarVector(int V[], int n){
 
 void invertirVector(int V[], int n){
 	int i, aux;
-	int V2[MAX];
-	V2 = V;
 	for(i=0; i<n/2 ; i++){
 		aux = V[i];
 		V[i] = V[n-1-i];
 		V[n-1-i] = aux;
 	}
-	mostrarVector(V2, n);
+	for(i=0; i<n; i++){
+		cout << " V[" << i << "]= " << V[i] << endl;
+	}
 }
 
 
@@ -121,3 +122,4 @@ string invertirCadena(string var3){
 	}
 	return var2;
 }
+
