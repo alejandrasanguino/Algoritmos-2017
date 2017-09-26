@@ -1,0 +1,76 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#define MAX 50
+
+using namespace std;
+
+struct t_Estudiante{
+	int nroestudiante;
+	string nombre;
+	string apellido;
+	string direccion;
+	int telefono;
+	int celular;
+	int npractica;
+	int nparcial1;
+	int nparcial2;
+	int nparcial3;
+	int examenf;
+};
+
+void cargart_estudiante(t_Estudiante vector[],int n);
+void mostrart_estudiante(t_Estudiante vector[],int n);
+float promedio_parcial(t_Estudiante vector[],int n);
+float nota_final(t_Estudiante vector[],int i);
+
+void main(){
+	int n;
+	t_Estudiante vec[MAX];
+	do{
+	cout<<"ingresar la cantidad de Alumnos: ";
+	cin>>n;
+	}while (n<0 || n>MAX);
+	cargart_estudiante(vec,n);
+	mostrart_estudiante(vec,n);
+}
+
+
+void cargart_estudiante(t_Estudiante vector[],int n){
+	cin.ignore();
+	for (int i=0;i<n;i++){
+		vector[i].nroestudiante=i+1;
+		cin.ignore();
+		cout<<"ingresar el nombre del estudiante: ";
+		getline(cin,vector[i].nombre);
+		cout<<"ingresar el apellido del estudiante: ";
+		getline(cin,vector[i].apellido);
+		cout<<"ingresar el direccion del estudiante: ";
+		getline(cin,vector[i].direccion);
+		cout<<"ingresar el telefono del estudiante: ";
+		cin>>vector[i].telefono;
+		cout<<"ingresar el celular del estudiante: ";
+		cin>>vector[i].celular;
+		cout<<"ingresar la nota practica del estudiante: ";
+		cin>>vector[i].npractica;
+		cout<<"ingresar la nota del primer parcial del estudiante: ";
+		cin>>vector[i].nparcial1;
+		cout<<"ingresar la nota del segundo parcial del estudiante: ";
+		cin>>vector[i].nparcial2;
+		cout<<"ingresar la nota del tercer parcial del estudiante: ";
+		cin>>vector[i].nparcial3;
+		cout<<"ingresar la nota del examen final del estudiante:";
+		cin>>vector[i].examenf;
+		cout<<endl;
+		cin.ignore();
+	}
+}
+
+float promedioparcial(t_Estudiante vector, int n){
+	float prom;
+	prom = (vector[i].nparcial1 + vector[i].nparcial2 + vector[i].nparcial3)/3.0;
+	return prom;
+}
+
+void mostrart_estudiante(
