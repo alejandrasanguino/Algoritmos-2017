@@ -29,11 +29,14 @@ void main(){
 	int n;
 	t_Estudiante vec[MAX];
 	do{
-	cout<<"ingresar la cantidad de Alumnos: ";
-	cin>>n;
+		cout << "ingresar la cantidad de Alumnos: ";
+		cin >>n;
 	}while (n<0 || n>MAX);
 	cargart_estudiante(vec,n);
-	mostrart_estudiante(vec,n);
+	cout <<"-----Listado de notas-----"<<endl<<endl;
+	cout <<"Nro \t"<<"Nombre \t\t"<<"Apellido \t\t"<<"N.P. \t\t"<<"P.P. \t\t"<<"E.F. \t\t"<<"N.F. \t\t"<<endl;
+    mostrart_estudiante(vec, n);
+	getch();
 }
 
 
@@ -64,13 +67,24 @@ void cargart_estudiante(t_Estudiante vector[],int n){
 		cin>>vector[i].examenf;
 		cout<<endl;
 		cin.ignore();
+		
 	}
 }
 
-float promedioparcial(t_Estudiante vector, int n){
+float promedioparcial(t_Estudiante vector[], int i){
 	float prom;
 	prom = (vector[i].nparcial1 + vector[i].nparcial2 + vector[i].nparcial3)/3.0;
 	return prom;
 }
 
-void mostrart_estudiante(
+void mostrart_estudiante(t_Estudiante vector[],int n){
+	for (int i=0; i<n ; i++){
+		cout<<endl<<vector[i].nroestudiante<<"\t";
+		cout<<vector[i].nombre<<"\t";
+		cout<<vector[i].apellido<<"\t\t";
+		cout<<vector[i].npractica<<"\t";
+		cout<<promedioparcial(vector,i)<<"\t";
+		cout<<vector[i].examenf<<"\t";
+		cout<<(vector[i].npractica*0.2)+(promedioparcial(vector,i)*0.4)+(vector[i].examenf*0.4)<<"\t";
+	}
+}
