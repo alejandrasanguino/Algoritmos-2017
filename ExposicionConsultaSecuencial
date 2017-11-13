@@ -63,15 +63,12 @@ void main()
 void ALTA_SECUENCIAL(void){ 
 	int idReserva;  // Variable local para el numero de producto 
 	cout << "\n\rALTAS DE REGISTROS DE Reservas Naturales"; 
-	alias=fopen("RESERVA.SEC","rb+"); // Intenta abrir el archivo  
-                                     // en modo de lectura/escritura 
+	alias=fopen("RESERVA.SEC","rb+"); // Abre el archivo  en modo de lectura-escritura 
 	if(alias==NULL) 
-    alias=fopen("RESERVA.SEC","wb"); // Crea el archivo en caso de no existir 
+    alias=fopen("RESERVA.SEC","wb"); // Crea el archivo en caso de que no exista
 	cout << "\n\n\n\rNumero de Reserva: "; cin >> idReserva; 
-	fread(&Registro,sizeof(Registro),1,alias); 
-  // Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias" 
-	while(!feof(alias)) // Ciclo mientras no se encuentre el final del 
-                      // archivo 
+	fread(&Registro,sizeof(Registro),1,alias); // Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias" 
+	while(!feof(alias)) // el puntero cicla hasta hallar el final del archivo
 	{ 
 		if(Registro.idReserva==idReserva) { 
 			cout << "\n\n\n\rRegistro duplicado !!!"; 
@@ -86,7 +83,7 @@ void ALTA_SECUENCIAL(void){
 	cout << "\n\rNombre de Dpto   : "; getline (cin,Registro.nombreDpto); 
 	cout << "\n\rExtension     : "; cin >> Registro.extensionReserva; 
 	Registro.idReserva=idReserva; 
-	fwrite(&Registro,sizeof(Registro),1,alias); // Grabar el Registro  
+	fwrite(&Registro,sizeof(Registro),1,alias); // Graba o escribe el archivo
 	fclose(alias); // Cierra el archivo 
 	cout << "\n\n\n\rDatos de Reserva Registrados !!!"; 
 	cout << "\n\r<<< Oprima cualquier tecla para continuar >>>"; 
@@ -96,8 +93,7 @@ void ALTA_SECUENCIAL(void){
 
 void LISTADO_SECUENCIAL(void) { 
 	cout << "\n\rLISTADO DE REGISTROS DE RESERVAS NATURALES"; 
-	alias=fopen("RESERVA.SEC","rb"); // Intenta abrir el archivo PRODUCTO.SEC
-                             // en modo de solo lectura 
+	alias=fopen("RESERVA.SEC","rb"); // Abre el archivo RESERVA.SEC en modo lectura
 	if(alias==NULL){ 
 		cout << "\n\n\n\rNo existe el archivo !!!"; 
 		cout << "\n\r<<< Oprima cualquier tecla para continuar >>>"; 
@@ -108,7 +104,7 @@ void LISTADO_SECUENCIAL(void) {
 	cout << "\n\r------------------------------------------------------------------------------"<<endl; 
 	fread(&Registro,sizeof(Registro),1,alias); 
      // Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias"
-	while(!feof(alias)) // Ciclo mientras no se encuentre el final del archivo 
+	while(!feof(alias)) // El puntero cicla mientras no se encuentre el final del archivo 
 	{ 
 		cout<<Registro.idReserva<<"\t""\t"<<Registro.nombreReserva<<"\t""\t"<<Registro.nombreDpto<<"\t""\t"<<Registro.extensionReserva<<"\t""\t"<<endl; 
 		fread(&Registro,sizeof(Registro),1,alias); 
@@ -124,8 +120,7 @@ void LISTADO_SECUENCIAL(void) {
 void CONSULTA_SECUENCIAL(void){ 
 	int idReserva; 
 	cout << "\n\rCONSULTA DE REGISTROS DE PRODUCTOS"; 
-	alias=fopen("RESERVA.SEC","rb"); // Intenta abrir el archivo PRODUCTO.SEC 
-                             // en modo de solo lectura 
+	alias=fopen("RESERVA.SEC","rb"); // Abre el Archivo RESERVA.SEC en modo lectura 
 	if(alias==NULL){ 
 		cout << "\n\n\n\rNo existe el archivo !!!"; 
 		cout << "\n\r<<< Oprima cualquier tecla para continuar >>>"; 
